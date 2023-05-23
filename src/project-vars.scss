@@ -2,10 +2,13 @@ $project-colors: (
     color-Black: #000000,
     color-White: #ffffff,
     color-Gray: #2d2f34,
+    color-Gray-medium: #9196a7,
+    color-Gray-light: #f1f2f6,
     color-Red: #ff0000,
     color-Orange: #ff6700,
     color-Yellow: #fdc921,
     color-Blue: #09428e,
+    color-Blue-dark: #1C274C,
     color-Green: #388659,
 );
 
@@ -44,10 +47,22 @@ body {
     line-height: $font-line-height;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
 #root {
-    max-width: 1440px;
+    max-width: 1200px;
     min-width: 320px;
     width: 100%;
     padding: 20px;
     margin: 0 auto;
+}
+
+input[type='text'] {
+    line-height: 1;
+    font-weight: $font-weight-base;
+    font-family: $font-family-base;
+    color: var(--color-Blue-dark);
 }
