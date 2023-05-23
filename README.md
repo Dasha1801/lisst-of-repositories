@@ -1,1 +1,1 @@
-# lisst-of-repositories
+# list-of-repositories
