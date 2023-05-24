@@ -26,4 +26,31 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+export const GET_REPOSITORIES_COUNT = gql`
+  query GetRepositoryCount($repositoryName: String!) {
+    search(query: $repositoryName, type: REPOSITORY) {
+      repositoryCount
+    }
+  }
+`;
+
+export const GET_MY_REPOSITORIES = gql`
+  query GetUserRepositories($username: String!) {
+    user(login: $username) {
+      repositories(first: 10) {
+        nodes {
+          ... on Repository {
+            name
+            description
+            url
+            pushedAt
+            stargazerCount
+            id
+          }
+        }
+      }
+    }
+  }
+`;
+
 export default client;
