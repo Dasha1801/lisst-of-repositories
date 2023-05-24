@@ -16,7 +16,7 @@
             color: var(--color-Blue-dark);
             font-weight: 700;
             line-height: 1.15;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
 
             &:hover {
@@ -47,6 +47,9 @@
                 .info {
                     color: var(--color-Blue-dark);
                     font-size: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
                 }
 
                 &:last-child {
