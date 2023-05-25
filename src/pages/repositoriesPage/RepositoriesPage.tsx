@@ -1,10 +1,10 @@
-import githubLogo from '../assets/images/github.svg';
-import search from '../assets/images/search.svg';
-import InputField from '../components/inputField/InputField';
-import ListRepositories from '../components/listRepositories/ListRepositories';
-import UserRepositories from '../components/userRepositories/UserRepositories';
-import useFilterQuery from '../utils/useFilterQuery';
-import './Main.scss';
+import githubLogo from '../../assets/images/github.svg';
+import search from '../../assets/images/search.svg';
+import InputField from '../../components/inputField/InputField';
+import ListRepositories from '../../components/listRepositories/ListRepositories';
+import UserRepositories from '../../components/userRepositories/UserRepositories';
+import useFilterQuery from '../../utils/useFilterQuery';
+import './RepositoriesPage.scss';
 
 function RepositoriesPage() {
   const { setNewSearchParams, getCurrentSearchParamValue } = useFilterQuery();

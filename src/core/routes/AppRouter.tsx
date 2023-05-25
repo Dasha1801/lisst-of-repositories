@@ -6,7 +6,8 @@ import {
   useRoutes,
 } from 'react-router-dom';
 import { AllRoutes } from './AllRoutes';
-import RepositoriesPage from '../../pages/RepositoriesPage';
+import RepositoriesPage from '../../pages/repositoriesPage/RepositoriesPage';
+import DetailInfoRepository from '../../pages/detailInfoRepository/DetailInfoRepository';
 
 interface IRedirect {
   path?: string;
@@ -28,7 +29,7 @@ const baseRoutes: RouteObject = {
     {
       path: AllRoutes.repositories.path,
       children: [
-        { path: AllRoutes.repositoryId.path, element: <div>test</div> },
+        { path: AllRoutes.repositoryId.path, element: <DetailInfoRepository/> },
       ],
     },
     { path: '*', element: <AppRedirect path={AllRoutes.repositories.path} /> },
