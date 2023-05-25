@@ -7,6 +7,7 @@ import ItemRepositories, {
   IItemRepo,
 } from '../itemRepositories.tsx/ItemRepositories';
 import Pagination, { LIMIT_BASE } from '../pagination/Pagination';
+import Spinner from '../spinner/Spinner';
 
 function ListRepositories() {
   const { getCurrentSearchParamValue, setNewSearchParams } = useFilterQuery();
@@ -31,10 +32,9 @@ function ListRepositories() {
   });
 
   useEffect(() => {
-    if (!data && getCurrentSearchParamValue('offset')) {
-      setNewSearchParams({ value: '', searchParamName: 'offset' });
-    }
-  }, [data, getCurrentSearchParamValue, setNewSearchParams]);
+    setNewSearchParams({ value: '', searchParamName: 'offset' });
+    // eslint-disable-next-line
+  }, []); 
 
   return (
     <>
@@ -49,6 +49,7 @@ function ListRepositories() {
         !loading &&
         count.search.repositoryCount > LIMIT_BASE
       ) && <Pagination totalCount={count.search.repositoryCount} />}
+      {!!loading && <Spinner />}
     </>
   );
 }

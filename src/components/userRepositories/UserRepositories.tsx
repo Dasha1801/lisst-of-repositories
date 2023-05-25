@@ -7,10 +7,11 @@ import useFilterQuery from '../../utils/useFilterQuery';
 import ItemRepositories, {
   IItemRepo,
 } from '../itemRepositories.tsx/ItemRepositories';
+import Spinner from '../spinner/Spinner';
 
 function UserRepositories() {
   const { getCurrentSearchParamValue } = useFilterQuery();
-  const { data } = useQuery(GET_MY_REPOSITORIES, {
+  const { data, loading } = useQuery(GET_MY_REPOSITORIES, {
     variables: {
       username: 'Dasha1801',
       first: 100,
@@ -30,7 +31,6 @@ function UserRepositories() {
 
     return [];
   }, [data, getCurrentSearchParamValue]);
-
   return (
     <>
       <div className="list-repo">
@@ -42,6 +42,7 @@ function UserRepositories() {
       {!!(data?.user?.repositories.totalCount > LIMIT_BASE) && (
         <Pagination totalCount={data?.user?.repositories.totalCount} />
       )}
+      {!!loading && <Spinner />}
     </>
   );
 }

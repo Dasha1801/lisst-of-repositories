@@ -29,7 +29,10 @@ const baseRoutes: RouteObject = {
     {
       path: AllRoutes.repositories.path,
       children: [
-        { path: AllRoutes.repositoryId.path, element: <DetailInfoRepository/> },
+        {
+          path: AllRoutes.repositoryId.path,
+          element: <DetailInfoRepository />,
+        },
       ],
     },
     { path: '*', element: <AppRedirect path={AllRoutes.repositories.path} /> },
