@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px 40px;
+
+    .logo {
+        width: 145px;
+        height: 60px;
+    }
+
+    @media(max-width: 640px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

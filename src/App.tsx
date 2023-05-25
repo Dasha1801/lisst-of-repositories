@@ -1,7 +1,12 @@
-import './App.scss';
+import { HashRouter } from 'react-router-dom';
+import { AppRouter } from './core/routes/AppRouter';
 
 function App() {
-  return <div>App</div>;
+  return (
+    <HashRouter>
+      <AppRouter />
+    </HashRouter>
+  );
 }
 
 export default App;
