@@ -1,10 +1,10 @@
 import { HashRouter } from 'react-router-dom';
-import Main from './pages/Main';
+import { AppRouter } from './core/routes/AppRouter';
 
 function App() {
   return (
     <HashRouter>
-      <Main />
+      <AppRouter />
     </HashRouter>
   );
 }

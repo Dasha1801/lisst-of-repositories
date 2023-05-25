@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useMemo } from 'react';
-import { GET_MY_REPOSITORIES } from '../../core/api';
+import { GET_MY_REPOSITORIES } from '../../core/api/Api';
 import Pagination, { LIMIT_BASE } from '../pagination/Pagination';
 import '../listRepositories/ListRepositories.scss';
 import useFilterQuery from '../../utils/useFilterQuery';

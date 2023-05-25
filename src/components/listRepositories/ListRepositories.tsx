@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useQuery } from '@apollo/client';
-import { GET_REPOSITORIES, GET_REPOSITORIES_COUNT } from '../../core/api';
+import { GET_REPOSITORIES, GET_REPOSITORIES_COUNT } from '../../core/api/Api';
 import useFilterQuery from '../../utils/useFilterQuery';
 import Pagination, { LIMIT_BASE } from '../pagination/Pagination';
 import './ListRepositories.scss';

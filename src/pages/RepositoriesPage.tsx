@@ -6,7 +6,7 @@ import UserRepositories from '../components/userRepositories/UserRepositories';
 import useFilterQuery from '../utils/useFilterQuery';
 import './Main.scss';
 
-function Main() {
+function RepositoriesPage() {
   const { setNewSearchParams, getCurrentSearchParamValue } = useFilterQuery();
 
   const onChangeHandler = (val: string) => {
@@ -47,4 +47,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default RepositoriesPage;
