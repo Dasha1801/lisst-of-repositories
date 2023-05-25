@@ -21,19 +21,31 @@ export const GET_REPOSITORIES = gql`
       first: $first
       after: $after
     ) {
-      nodes {
-        ... on Repository {
-          name
-          description
-          url
-          pushedAt
-          stargazerCount
-          id
-        }
-      }
+      repositoryCount
       pageInfo {
         hasNextPage
         endCursor
+      }
+      edges {
+        node {
+          ... on Repository {
+            name
+            stargazerCount
+            pushedAt
+            id
+            url
+            owner {
+              avatarUrl
+              login
+            }
+            languages(first: 5, orderBy: { field: SIZE, direction: DESC }) {
+              nodes {
+                name
+              }
+            }
+            description
+          }
+        }
       }
     }
   }
@@ -48,23 +60,34 @@ export const GET_REPOSITORIES_COUNT = gql`
 `;
 
 export const GET_MY_REPOSITORIES = gql`
-  query GetUserRepositories($username: String!, $first: Int!, $after: String) {
+  query GetUserRepos($username: String!, $after: String) {
     user(login: $username) {
-      repositories(first: $first, after: $after) {
+      repositories(
+        first: 100
+        after: $after
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
         totalCount
-        nodes {
-          ... on Repository {
-            name
-            description
-            url
-            pushedAt
-            stargazerCount
-            id
-          }
-        }
         pageInfo {
           hasNextPage
           endCursor
+        }
+        nodes {
+          name
+          stargazerCount
+          pushedAt
+          id
+          url
+          owner {
+            avatarUrl
+            login
+          }
+          languages(first: 5, orderBy: { field: SIZE, direction: DESC }) {
+            nodes {
+              name
+            }
+          }
+          description
         }
       }
     }

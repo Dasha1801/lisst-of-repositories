@@ -1,10 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES, GET_REPOSITORIES_COUNT } from '../../core/api/Api';
 import useFilterQuery from '../../utils/useFilterQuery';
-import Pagination, { LIMIT_BASE } from '../pagination/Pagination';
 import './ListRepositories.scss';
-import ItemRepositories, { IItemRepo } from '../itemRepositories.tsx/ItemRepositories';
+import ItemRepositories, {
+  IItemRepo,
+} from '../itemRepositories.tsx/ItemRepositories';
+import Pagination, { LIMIT_BASE } from '../pagination/Pagination';
 
 function ListRepositories() {
   const { getCurrentSearchParamValue, setNewSearchParams } = useFilterQuery();
@@ -14,7 +16,7 @@ function ListRepositories() {
       first: 10,
       after:
         !!getCurrentSearchParamValue('offset') &&
-          +getCurrentSearchParamValue('offset')! > 0
+        +getCurrentSearchParamValue('offset')! > 0
           ? btoa(`cursor:${getCurrentSearchParamValue('offset')}`)
           : null,
     },
@@ -30,16 +32,16 @@ function ListRepositories() {
 
   useEffect(() => {
     if (!data && getCurrentSearchParamValue('offset')) {
-      setNewSearchParams({ value: '', searchParamName: 'offset' })
+      setNewSearchParams({ value: '', searchParamName: 'offset' });
     }
-  }, [])
+  }, [data, getCurrentSearchParamValue, setNewSearchParams]);
 
   return (
     <>
       <div className="list-repo">
         {!!data &&
-          data.search.nodes.map((el: IItemRepo) => (
-            <ItemRepositories info={el} key={`item-repo-${el.id}`} />
+          data.search.edges.map((el: { node: IItemRepo }) => (
+            <ItemRepositories info={el.node} key={`item-repo-${el.node.id}`} />
           ))}
       </div>
       {!!(

@@ -9,7 +9,7 @@ interface IAppPagination {
   limit?: number;
 }
 
-export function Pagination({ totalCount, limit = LIMIT_BASE }: IAppPagination) {
+function Pagination({ totalCount, limit = LIMIT_BASE }: IAppPagination) {
   const { setNewSearchParams, getCurrentSearchParamValue } = useFilterQuery();
   const [currentPage, setCurrentPages] = useState(
     !getCurrentSearchParamValue('offset')
@@ -29,7 +29,7 @@ export function Pagination({ totalCount, limit = LIMIT_BASE }: IAppPagination) {
         value: `${(page > 0 ? page - 1 : page) * limit}`,
       });
     },
-    [setNewSearchParams]
+    [setNewSearchParams, limit]
   );
 
   return (

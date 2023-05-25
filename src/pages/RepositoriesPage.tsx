@@ -10,15 +10,15 @@ function RepositoriesPage() {
   const { setNewSearchParams, getCurrentSearchParamValue } = useFilterQuery();
 
   const onChangeHandler = (val: string) => {
-    if (!val && getCurrentSearchParamValue('offset')){
-      setNewSearchParams({value: '', searchParamName: 'offset'})
+    if (!val && getCurrentSearchParamValue('offset')) {
+      setNewSearchParams({ value: '', searchParamName: 'offset' });
     }
 
     setNewSearchParams({
       value: val,
       searchParamName: 'name-repository',
-    })
-  }
+    });
+  };
 
   return (
     <>

@@ -1,31 +1,29 @@
 export interface IRouteItem {
-    path: string
-    name: string
+  path: string;
+  name: string;
 }
 
 const baseRoutes = {
-    root: {
-        path: '/',
-        name: 'Root',
-    },
-    repositories: {
-        path: 'repositories',
-        name: 'List repositories',
-    },
-    repositoryId: {
-        path: 'repositoryId',
-        name: 'Detail repository',
-    }
-}
+  root: {
+    path: '/',
+    name: 'Root',
+  },
+  repositories: {
+    path: 'repositories',
+    name: 'List repositories',
+  },
+  repositoryId: {
+    path: ':repositoryId',
+    name: 'Detail repository',
+  },
+};
 
 type TAllRoutes = {
-    [key in keyof typeof routes]: IRouteItem
-}
+  [key in keyof typeof routes]: IRouteItem;
+};
 
 const routes = {
-    ...baseRoutes,
-}
+  ...baseRoutes,
+};
 
-export const AllRoutes: TAllRoutes = routes
-
-
+export const AllRoutes: TAllRoutes = routes;
