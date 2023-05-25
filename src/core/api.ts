@@ -10,8 +10,17 @@ const client = new ApolloClient({
 });
 
 export const GET_REPOSITORIES = gql`
-  query GetRepositoriesByName($repositoryName: String!) {
-    search(query: $repositoryName, type: REPOSITORY, first: 10) {
+  query GetRepositories(
+    $repositoryName: String!
+    $first: Int!
+    $after: String
+  ) {
+    search(
+      query: $repositoryName
+      type: REPOSITORY
+      first: $first
+      after: $after
+    ) {
       nodes {
         ... on Repository {
           name
@@ -21,6 +30,10 @@ export const GET_REPOSITORIES = gql`
           stargazerCount
           id
         }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }
@@ -35,9 +48,10 @@ export const GET_REPOSITORIES_COUNT = gql`
 `;
 
 export const GET_MY_REPOSITORIES = gql`
-  query GetUserRepositories($username: String!) {
+  query GetUserRepositories($username: String!, $first: Int!, $after: String) {
     user(login: $username) {
-      repositories(first: 10) {
+      repositories(first: $first, after: $after) {
+        totalCount
         nodes {
           ... on Repository {
             name
@@ -47,6 +61,10 @@ export const GET_MY_REPOSITORIES = gql`
             stargazerCount
             id
           }
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
